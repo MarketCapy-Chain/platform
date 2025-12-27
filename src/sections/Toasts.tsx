@@ -5,95 +5,119 @@ import { useToastStore, type Toast as TToast } from '../hooks/useToast'
 
 const StyledToasts = styled.div`
   position: fixed;
-  right: 0;
-  top: 60px;
-  pointer-events: none;
+  right: 16px;
+  top: 72px;
   z-index: 1001;
+  pointer-events: none;
+
   display: flex;
   flex-direction: column-reverse;
-  gap: 10px;
-  padding: 20px;
-  width: 100%;
+  gap: 14px;
+
+  width: calc(100% - 32px);
 
   @media (min-width: 800px) {
-    width: unset;
     top: unset;
-    bottom: 0px;
-    padding: 40px;
+    bottom: 24px;
+    right: 24px;
+    width: auto;
   }
 `
 
 const StackedToast = styled.div`
-  background: #e8e8e8e3;
-  width: 100%;
-  border-radius: 10px;
-  height: 60px;
-  transform: translateY(-60px);
-  z-index: -1;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(20, 20, 28, 0.35);
+  backdrop-filter: blur(12px);
+
+  transform: scale(0.95) translateY(-6px);
+  opacity: 0.6;
+  pointer-events: none;
 `
 
 const StyledToast = styled.div`
-  @property --fade-in {
-    syntax: '<percentage>';
-    initial-value: 0%;
-    inherits: false;
+  @keyframes toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
   }
-  @keyframes toast-appear {
-    0% { opacity: 0; --fade-in: 100%; }
-    100% { opacity: 1; --fade-in: 0%; }
-  }
-  background: #fffffff0;
-  color: black;
-  border-radius: 10px;
+
+  background: rgba(24, 24, 32, 0.85);
+  color: #ffffff;
+
+  border-radius: 16px;
+  padding: 14px 16px;
+
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
+
   pointer-events: auto;
-  user-select: none;
   cursor: pointer;
-  padding: 10px;
+  user-select: none;
 
-  animation: toast-appear .2s;
+  animation: toast-in 0.25s ease;
 
-  width: 100%;
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 
-  filter: drop-shadow(3px 3px 1px #00000033);
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
 
   &:hover {
-    background: #ffffffff;
+    background: rgba(30, 30, 40, 0.92);
+    transform: translateY(-2px);
+    box-shadow:
+      0 22px 48px rgba(0, 0, 0, 0.65),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   @media (min-width: 800px) {
-    min-width: 250px;
-    max-width: 300px;
-    transform: translateX(var(--fade-in));
+    min-width: 280px;
+    max-width: 360px;
   }
 `
 
-const StyledTimer = styled.div<{$ticking: boolean}>`
-  @keyframes yesyes {
-    0% { width: 100%;}
-    100% { width: 0%;}
-  }
-  width: 100%;
-  height: 5px;
-  border-radius: 10px;
-  background: #cccccc55;
+const StyledTimer = styled.div<{ $ticking: boolean }>`
   position: relative;
+  height: 3px;
+  width: 100%;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
   overflow: hidden;
+
+  @keyframes timer {
+    from { width: 100%; }
+    to { width: 0%; }
+  }
+
   &:after {
-    ${(props) => props.$ticking && css`
-      animation: yesyes linear 10s;
-    `}
-    content: " ";
+    content: '';
     position: absolute;
-    border-radius: 10px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 5px;
-    background: #9564ff;
+    inset: 0;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      #7a6cff,
+      #9b8cff
+    );
+
+    ${(props) =>
+      props.$ticking &&
+      css`
+        animation: timer linear 10s;
+      `}
   }
 `
 
