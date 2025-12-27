@@ -10,32 +10,62 @@ import { useUserStore } from '../hooks/useUserStore'
 const StyledToken = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  padding: 2px 0;
+
   img {
-    height: 20px;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08);
   }
 `
 
 const StyledTokenImage = styled.img`
-  height: 20px;
-  aspect-ratio: 1/1;
+  height: 22px;
+  width: 22px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
 `
 
 const StyledTokenButton = styled.button`
   box-sizing: border-box;
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  display: flex;
   width: 100%;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 5px;
+  gap: 14px;
+
+  padding: 14px 16px;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+
+  transition:
+    background 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 4px 16px rgba(0, 0, 0, 0.35);
+
   &:hover {
-    background: #ffffff11;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 10px 28px rgba(0, 0, 0, 0.45);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow:
+      inset 0 2px 6px rgba(0, 0, 0, 0.5);
   }
 `
 
