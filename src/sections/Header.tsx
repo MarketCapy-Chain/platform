@@ -20,37 +20,96 @@ import { ENABLE_LEADERBOARD } from '../constants'
 const Bonus = styled.button`
   all: unset;
   cursor: pointer;
-  color: #ffe42d;
-  border-radius: 10px;
-  padding: 2px 10px;
-  font-size: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 4px 12px;
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  font-weight: bold;
-  transition: background-color 0.2s;
+  letter-spacing: 0.04em;
+
+  color: #ffd84d;
+  background: rgba(255, 216, 77, 0.12);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 4px 14px rgba(0, 0, 0, 0.35);
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
   &:hover {
-    background: white;
+    background: rgba(255, 216, 77, 0.2);
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 8px 22px rgba(0, 0, 0, 0.45);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow:
+      inset 0 2px 6px rgba(0, 0, 0, 0.4);
   }
 `
 
 const StyledHeader = styled.div`
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: calc(100% - 28px);
+  max-width: 1400px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  padding: 10px;
-  background: #000000cc;
-  backdrop-filter: blur(20px);
-  position: fixed;
-  top: 0;
-  left: 0;
+
+  padding: 10px 16px;
+
+  background: rgba(20, 20, 28, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
   z-index: 1000;
 `
 
 const Logo = styled(NavLink)`
-  height: 35px;
-  margin: 0 15px;
+  display: flex;
+  align-items: center;
+
+  height: 36px;
+  padding: 0 8px;
+
+  border-radius: 12px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+
   & > img {
-    height: 120%;
+    height: 110%;
+    object-fit: contain;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
   }
 `
 
