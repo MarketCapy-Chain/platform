@@ -1,7 +1,4 @@
 // src/sections/Game/Game.styles.ts
-Now this
-
-// src/sections/Game/Game.styles.ts
 import styled, { css, keyframes } from 'styled-components'
 
 const splashAnimation = keyframes`
