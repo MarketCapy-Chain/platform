@@ -118,18 +118,18 @@ export function WelcomeBanner() {
   return (
     <WelcomeWrapper>
       <WelcomeContent>
-        <h1>Welcome to Gamba v2 👋</h1>
+        <h1>Welcome to CapyBet</h1>
         <p>A fair, simple and decentralized casino on Solana.</p>
       </WelcomeContent>
       <ButtonGroup>
         <ActionButton onClick={handleCopyInvite}>
-          💸 Copy Invite
+          Invite and earn
         </ActionButton>
-        <ActionButton onClick={openLink('https://v2.gamba.so/')}>
-          🚀 Add Liquidity
+        <ActionButton onClick={openLink('#')}>
+          Buy $CAPY
         </ActionButton>
-        <ActionButton onClick={openLink('https://discord.gg/HSTtFFwR')}>
-          💬 Discord
+        <ActionButton onClick={openLink('https://t.me')}>
+          Telegram
         </ActionButton>
       </ButtonGroup>
     </WelcomeWrapper>
